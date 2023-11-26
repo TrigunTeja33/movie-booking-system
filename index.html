@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style1.css" />
+    <title>Movie App</title>
+  </head>
+  <body>
+    <header>
+      <div class="wrapper1">
+        <div class="container1">
+          <h1>movie booking</h1>
+          </div>
+          </div>
+      <form id="form">
+        <br>
+        <input type="text" id="search" class="search" placeholder="Search">
+      </form>
+      <div class="header-buttons">
+        <nav class="navbar">
+        <button class="login-btn" id="signupBtn">Login</button>
+      </div> 
+    </nav>           
+    </header>
+    <div class="blur-bg-overlay"></div>
+<div class="form-popup">
+  <span class="close-btn material-symbols-rounded"><b>X</b></span>
+  <div class="form-box login">
+    <div class="form-details">
+    </div>
+    <div class="form-content">
+      <h2>LOGIN</h2>
+      <form action="#">
+        <div class="input-field">
+          <input type="text" required>
+          <label>Email</label>
+        </div>
+        <div class="input-field">
+          <input type="password" required>
+          <label>Password</label>
+        </div>
+        <a href="#" class="forgot-pass-link">Forgot password?</a>
+        <button type="submit">Log In</button>
+      </form>
+      <div class="bottom-link">
+        Don't have an account?
+        <a href="#index.html" id="signup-link">Signup</a>
+      </div>
+    </div>
+  </div>
+  <div class="form-box signup">
+    <div class="form-details">
+    </div>
+    <div class="form-content">
+      <h2>SIGNUP</h2>
+      <form action="#">
+        <div class="input-field">
+          <input type="text" required>
+          <label>Enter your email</label>
+        </div>
+        <div class="input-field">
+          <input type="password" required>
+          <label>Create password</label>
+        </div>
+        <div class="policy-text">
+          <input type="checkbox" id="policy">
+          <label for="policy">
+            I agree the
+            <a href="#" class="option">Terms & Conditions</a>
+          </label>
+        </div>
+        <button type="submit">Sign Up</button>
+      </form>
+      <div class="bottom-link">
+        Already have an account?
+        <a href="#index.html" id="login-link">Login</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <main id="main"></main>
+
+    <script src="script1.js"></script>
+  </body>
+</html>
