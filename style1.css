@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
 
+
+
 * {
   box-sizing: border-box;
 }
@@ -83,7 +85,7 @@ header {
   font-family: inherit;
   font-size: 1rem;
   padding: 0.5rem 1rem;
-  color: #fff;
+  color: #090909;
   justify-content: flex-end;
 }
 
