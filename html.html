@@ -10,10 +10,12 @@
   <body>
     <div class="wrapper1">
       <div class="container1">
-        <h1>movie booking</h1>
-        <label>Selected Movie:</label>
-        <label id="movieTitle"></label>
+        <h1>cinema gauntlet</h1>
+        <div class="snap">
+         <p>within a snap <img src="snap.png" style="height:40px;vertical-align:text-bottom"></p>    
+        </div>      
       </div>
+
     <div class="movie-container">
       <label>Avaliable Theatres:</label>
       <label value="m1"></label>
@@ -43,12 +45,16 @@
     </div>
 
     <p class="text">
-      You have selected <span id="count">0</span> seats for a total price of Rs.<span
-        id="total"
-        >0</span
-      >
+      You have selected <span id="count">0</span> seats for
+      <b>"<label id="movieTitle"></label>"</b> of total price Rs.
+      <span id="total">0</span>
     </p>
+    
+    <!-- Add an element to display selected seat numbers -->
+    <p class="text">Selected Seats: <span id="selectedSeatsInfo"></span></p>
+    
     <button id="buyButton" class="btn" role="button">Book</button>
+    
     
 
     <script src="script.js"></script>
