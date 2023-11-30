@@ -10,7 +10,7 @@
     <header>
       <div class="wrapper1">
         <div class="container1">
-          <h1>movie booking</h1>
+          <h1>cinema gauntlet</h1>
           </div>
           </div>
       <form id="form">
@@ -19,7 +19,8 @@
       </form>
       <div class="header-buttons">
         <nav class="navbar">
-        <button class="login-btn" id="signupBtn">Login</button>
+        
+        <div id="user-status"></div>
       </div> 
     </nav>           
     </header>
@@ -31,16 +32,16 @@
     </div>
     <div class="form-content">
       <h2>LOGIN</h2>
-      <form action="#">
+      <form action="#" id="login-form" >
         <div class="input-field">
-          <input type="text" required>
-          <label>Email</label>
+          <input type="text" id="login-username" required>
+          <label>Username</label>
         </div>
         <div class="input-field">
-          <input type="password" required>
+          <input type="password" id="login-password" required>
           <label>Password</label>
         </div>
-        <a href="#" class="forgot-pass-link">Forgot password?</a>
+        <a href="#" class="forgot-pass-link" onclick="alert('Sorry, the Forgot Password feature is not available at the moment.')">Forgot password?</a>
         <button type="submit">Log In</button>
       </form>
       <div class="bottom-link">
@@ -54,20 +55,21 @@
     </div>
     <div class="form-content">
       <h2>SIGNUP</h2>
-      <form action="#">
+      <form action="#" id="signup-form">
         <div class="input-field">
-          <input type="text" required>
-          <label>Enter your email</label>
+          <input type="text" id="signup-username" required>
+          <label>Enter your username</label>
         </div>
+        
         <div class="input-field">
-          <input type="password" required>
+          <input type="password" id="signup-password" required>
           <label>Create password</label>
         </div>
         <div class="policy-text">
-          <input type="checkbox" id="policy">
+          <input type="checkbox" id="policy" required>
           <label for="policy">
             I agree the
-            <a href="#" class="option">Terms & Conditions</a>
+            <a href="#" class="option" onclick="alert('All content on our platform, unless otherwise stated, is the intellectual property of the service provider. You may not use, reproduce, or distribute any content without permission.')">Terms & Conditions</a>
           </label>
         </div>
         <button type="submit">Sign Up</button>
@@ -81,6 +83,7 @@
 </div>
 
     <main id="main"></main>
+    <button class="login-btn" id="signupBtn"></button>
 
     <script src="script1.js"></script>
   </body>
