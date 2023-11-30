@@ -48,6 +48,35 @@ h1 {
   
 }
 
+.snap {
+  text-align: center;
+      font-size:30px; font-weight:300; color: #98751c; letter-spacing:1px;
+      text-transform: uppercase;
+      display: grid;
+      grid-template-columns: 1fr max-content 1fr;
+      grid-template-rows: 27px 0;
+      grid-gap: 20px;
+      align-items: center;
+      font-family:"Playfair Display"
+  }
+  
+  .snap:after {
+      content: " ";
+      display: block;
+      border-bottom: 1px solid #3fdfdf;
+      border-top: 1px solid #3fdfdf;
+      height: 5px;
+    background-color:#3fdfdf;
+  }
+  .snap:before {
+    content: " ";
+    display: block;
+    border-bottom: 1px solid #c50000;
+    border-top: 1px solid #c50000;
+    height: 5px;
+  background-color:#df3f3f;
+}
+
 .container1 {
   padding: 1.5rem;   
   text-align: center;
@@ -66,7 +95,7 @@ h1 {
 
 @media screen and (min-width: 768px) {
   h1 {
-    font-size: 5.5rem;
+    font-size: 78px;
   }
 }
 
@@ -113,20 +142,26 @@ body {
 
 .seat {
   background-color: #fff;
-  height: 12px;
-  width: 15px;
+  height: 18px;
+  width: 22px;
   margin: 3px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  
+  color: #ffcd4f;
+  display: flex; /* Add this line to enable flexbox */
+  justify-content: center; /* Center content horizontally */
+  align-items: flex-end;
+  font-size: x-small;
 }
 
 .seat.selected {
   background-color: #db7f44;
+  color: white;
 }
 
 .seat.occupied {
   background-color: #a59e9e;
+  color: #a59e9e;
 }
 
 .seat:nth-of-type(2) {
@@ -140,6 +175,16 @@ body {
 .seat:not(.occupied):hover {
   cursor: pointer;
   transform: scale(1.2);
+}
+
+.row-label {
+  margin-right: 5px; /* Adjust the spacing as needed */
+  font-weight: 100;
+  color: black; /* Set the color for the row label */
+  display: flex; /* Add this line to enable flexbox */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
 .showcase .seat:not(.occupied):hover {
@@ -170,6 +215,7 @@ body {
 
 .row {
   display: flex;
+  
 }
 
 .screen {
