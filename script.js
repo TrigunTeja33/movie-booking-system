@@ -33,7 +33,6 @@ const movieSeatConfigurations = {
   m1: {
     numRows: 8,
     seatsPerRow: 18,
-    divisionColumns: [5, 10, 11, 14],
   },
   m2: {
     numRows: 6,
@@ -85,6 +84,8 @@ buyButton.addEventListener('click', () => {
     movieTitleElement.textContent = `${movieTitle}`
 
   if (selectedSeatsCount > 0) {
+    const selectedSeats = document.querySelectorAll('.row .seat.selected');
+    const selectedSeatLabels = [...selectedSeats].map(seat => seat.dataset.label);
     // Generating ticket information
     const ticketInfo = `
     <div class="ticketContainer">
@@ -92,19 +93,15 @@ buyButton.addEventListener('click', () => {
       <div class="ticketTitle">Your Booking</div>
       <hr>
       <div class="ticketDetail">
-        <div>Movie: ${movieTitleElement.textContent}</div>
-        <div>Theatre: ${movieSelect.options[movieSelect.selectedIndex].text}</div>
-        <div>Time: 18:30</div>
-        <div>Tickets Booked: ${selectedSeatsCount} (Rs.${totalPrice})<br>(Tax Included)</div>
+        <div><b>Movie:</b> ${movieTitleElement.textContent}</div>
+        <div><b>Theatre:</b> ${movieSelect.options[movieSelect.selectedIndex].text}</div>
+        <div><b>Time:</b> 18:30</div>
+        <div><b>Tickets Booked:</b> ${selectedSeatLabels.join(', ')} (Rs.${totalPrice})<br><b><i>(Tax Included)</i></b></div>
       </div>      
       <div class="ticketRip">
         <div class="circleLeft"></div>
         <div class="ripLine"></div>
         <div class="circleRight"></div>
-      </div>
-      <div class="ticketSubDetail">
-        <div class="code">LO-2314XXX</div>
-        <div class="date"> Jan 14<sup>th</sup> 2023</div>
       </div>
 
         </div>
@@ -116,7 +113,7 @@ buyButton.addEventListener('click', () => {
     openTicketWindow(ticketInfo);
 
     // Updating selected seats to "occupied"
-    const selectedSeats = document.querySelectorAll('.row .seat.selected');
+
     selectedSeats.forEach((seat) => {
       seat.style.backgroundColor = '#a59e9e';
       seat.classList.remove('selected');
@@ -212,17 +209,28 @@ function initializeSeats() {
   container.innerHTML = '';
   container.appendChild(screen);
 
+  
+
   for (let i = 0; i < seatConfiguration.numRows; i++) {
     const row = document.createElement('div');
     row.className = 'row';
 
-    for (let j = 0; j < seatConfiguration.seatsPerRow; j++) {
-      const seat = document.createElement('div');
-      seat.className = 'seat';
 
-      if (seatConfiguration.divisionColumns.includes(j)) {
-        seat.classList.add('division');
-      }
+    // Convert the row index to an alphabet (A, B, C, ...)
+    const rowLabel = String.fromCharCode('A'.charCodeAt(0) + i);
+
+    // Create a label for each row
+    const rowLabelElement = document.createElement('div');
+    rowLabelElement.className = 'row-label';
+    rowLabelElement.textContent = rowLabel;
+
+    row.appendChild(rowLabelElement);
+    
+    for (let j = 0; j < seatConfiguration.seatsPerRow; j++) {
+      const seat = document.createElement('di');
+      seat.className = 'seat';
+      seat.dataset.label = rowLabel + (j + 1); // Store the seat label in the dataset
+      seat.innerText = (j + 1); // Add seat label
 
       row.appendChild(seat);
     }
@@ -253,15 +261,19 @@ function updateSelectedCount() {
   const seatPrices = moviePrices[movieSelect.value];
 
   let totalPrice = 0;
-  selectedSeats.forEach(() => {
+  let selectedSeatLabels = [];
+
+  selectedSeats.forEach((seat) => {
     totalPrice += seatPrices;
+    // Check if a dataset label exists, if so, use it, otherwise use the seat number
+    selectedSeatLabels.push(seat.dataset.label || seat.innerText);
   });
 
   total.innerText = totalPrice;
 
-  // Get indexes of selected seats
-  const selectedSeatsIndexes = [...selectedSeats].map((seat) => {
-    const seats = document.querySelectorAll('.row .seat');
-    return [...seats].indexOf(seat);
-  });
+  // Display selected seat labels in the ticket
+  const selectedSeatsInfo = selectedSeatLabels.join(', ');
+  const selectedSeatsInfoElement = document.getElementById('selectedSeatsInfo');
+  selectedSeatsInfoElement.textContent = selectedSeatsInfo;
+  
 }
